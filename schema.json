@@ -1,0 +1,77 @@
+{
+  "$schema": "http://json-schema.org/draft-04/schema#",
+  "properties": {
+    "accounts": {
+      "description": "あなたが利用しているインターネットサービスのアカウント",
+      "properties": {
+        "hatena": {
+          "description": "はてなのアカウント名",
+          "type": "string"
+        },
+        "github": {
+          "description": "GitHubのアカウント名",
+          "type": "string"
+        },
+        "twitter": {
+          "description": "Twitterのアカウント名",
+          "type": "string"
+        },
+        "facebook": {
+          "description": "Facebookのアカウント名",
+          "type": "string"
+        },
+        "qiita": {
+          "description": "Qiitaのアカウント名",
+          "type": "string"
+        }
+      },
+      "type": "object"
+    },
+    "languages": {
+      "description": "あなたが得意なプログラミング言語(より得意な言語順)",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "websites": {
+      "description": "あなたのことがわかるWebサイトのURL",
+      "items": {
+        "type": "string"
+      },
+      "type": "array"
+    },
+    "works": {
+      "description": "あなたの作ったソフトウェアや作ったWebサイト、書いた論文などの成果物",
+      "items": {
+        "properties": {
+          "description": {
+            "description": "成果物の説明",
+            "type": "string"
+          },
+          "name": {
+            "description": "成果物の名称やタイトル",
+            "type": "string"
+          },
+          "url": {
+            "description": "成果物が公開されているURL(あれば)",
+            "type": "string"
+          }
+        },
+        "anyOf": [
+          { "required": ["name", "description"] },
+          { "required": ["name", "url"] }
+        ],
+        "type": "object"
+      },
+      "type": "array"
+    },
+    "portfolio": {
+      "description": "Markdown形式の自然文で書かれたあなたのポートフォリオ。他の項目に収まらない内容や、補足する事項などをなんでも書いて下さい。",
+      "type": "string"
+    }
+  },
+  "required": ["languages", "portfolio"],
+  "type": "object",
+  "additionalProperties": false
+}
